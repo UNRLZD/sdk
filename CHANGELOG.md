@@ -1,0 +1,26 @@
+# Changelog
+
+Every release of `@unrlzd/sdk` on npm, newest first. Versions follow [semantic versioning](https://semver.org); before
+1.0, a minor release can change the API.
+
+## 0.1.1 (2026-10-24)
+
+Documentation, example and package metadata only; the code is the same as 0.1.0.
+
+- README: install, requirements, a quick start that onboards a new user (`fundYocto: await sdk.minFunding()`), the security model split into what the contract enforces and what the SDK checks, versioning, and links to the docs.
+- Example: Connect funds a new account with `await sdk.minFunding()` (0.7 NEAR on mainnet). It passed `MIN_FUNDING` (0.2 NEAR), which failed with `FUNDING_TOO_LOW` for a new user.
+- package.json: `homepage`, `bugs`, `keywords`, `engines` (Node.js 24 or later) and `author`; the published manifest no longer lists the workspace's scripts.
+
+## 0.1.0 (2026-10-23)
+
+First release.
+
+- Quotes for buys and sells, with the same routes and on-chain checks as the UNRLZD terminal. With no device key and no account, `sdk.quote` returns what a new trading account would be quoted.
+- Guardrails: `account.guardrails(quote)` returns the notices and confirms the terminal would show. `execute` refuses a quote until every confirm is passed back.
+- Checked signing and sending from a user's UNRLZD trading account: `account.execute` signs only terms no wider than the quote shown, and `account.dryRun` returns the terms and operations without signing or sending.
+- Your builder code on every trade and 24/7 order.
+- Browser use: the device key stays in your origin's IndexedDB, and `nearConnectWallet` adapts a `@hot-labs/near-connect` wallet.
+- Server use: `DeviceSigner.fromSecret` takes your own device key, and `FileIntentLog` (`@unrlzd/sdk/node`) keeps a trade from being sent twice after a restart.
+- Account setup and deposits: `sdk.status`, `sdk.minFunding`, `account.deposit` from the owner's NEAR wallet, and `account.depositAddress` for deposits from another chain or an exchange.
+- `sdk.feed()`: the live WebSocket feed, with typed channels, resynced gaps, reconnects, and each trade delivered once.
+- Builder fee on top: not enabled until the core contract is upgraded. Send `f: 0`.

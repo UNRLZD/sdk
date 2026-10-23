@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@unrlzd/sdk example</title>
+    <style>
+      body { font: 14px/1.5 system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1rem; }
+      fieldset { margin: 0 0 1rem; }
+      input { width: 16rem; }
+      pre { background: #f4f4f4; padding: 0.5rem; white-space: pre-wrap; word-break: break-all; }
+    </style>
+  </head>
+  <body>
+    <h1>@unrlzd/sdk</h1>
+    <fieldset>
+      <button type="button" id="connect">Connect</button>
+      <span id="account"></span>
+    </fieldset>
+    <fieldset>
+      <label>Token <input id="token" value="blackdragon.tkn.near" /></label><br />
+      <label>Amount (NEAR) <input id="amount" value="0.02" /></label><br />
+      <button type="button" id="quote" disabled>Quote</button>
+      <button type="button" id="buy" disabled>Buy</button>
+      <button type="button" id="sell" disabled>Sell</button>
+    </fieldset>
+    <fieldset>
+      <button type="button" id="place" disabled>Place 24/7 order</button>
+      <button type="button" id="cancel" disabled>Cancel 24/7 order</button>
+    </fieldset>
+    <pre id="out"></pre>
+    <script type="module" src="/src/app.ts"></script>
+  </body>
+</html>

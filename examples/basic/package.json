@@ -1,0 +1,26 @@
+{
+  "name": "@unrlzd/sdk-example-basic",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "@unrlzd/sdk example: a page (connect, quote, buy, sell, 24/7 order) and a server script, every trade tagged with a builder code.",
+  "scripts": {
+    "dev": "vite --port 31190 --strictPort",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "server": "node src/server.ts",
+    "keygen": "node src/keygen.ts"
+  },
+  "dependencies": {
+    "@hot-labs/near-connect": "0.11.4",
+    "@scure/base": "1.2.6",
+    "@unrlzd/sdk": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.1",
+    "vitest": "5.0.2"
+  }
+}
